@@ -20,6 +20,15 @@ object DataBase {
         }
     }
 
+    fun closeConnection(connection: Connection?) {
+        try {
+            connection?.close()
+            println("Conexión cerrada correctamente")
+        } catch (e: SQLException) {
+            System.err.println("Error al cerrar la conexión: ${e.message}")
+        }
+    }
+
     fun initDatabase() {
         getConnection().use { conn ->
             val stmt = conn?.createStatement()
