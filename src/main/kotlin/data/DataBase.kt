@@ -7,7 +7,7 @@ import java.sql.SQLException
 
 object DataBase {
 
-    const val DB_URL = "jdbc:h2:./data/dbtest"
+    const val DB_URL = "jdbc:h2:./data/tienda"
     const val USER = "sa"
     const val PASS = ""
 
@@ -30,16 +30,48 @@ object DataBase {
     }
 
     fun initDatabase() {
-        getConnection().use { conn ->
-            val stmt = conn?.createStatement()
-            stmt?.executeUpdate(
-                """CREATE TABLE IF NOT EXISTS users (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255),
-                email VARCHAR(255)
-            )"""
-            )
+        getConnection()?.use { conn ->
+            conn.createStatement().use { stmt ->
+                stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS Usuario (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nombre VARCHAR(255) NOT NULL,
+                    email VARCHAR(255) UNIQUE
+                )
+            """.trimIndent())
 
+                stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS Producto (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nombre VARCHAR(255) NOT NULL,
+                    precio DECIMAL(10, 2) NOT NULL,
+                    stock INT NOT NULL
+                )
+            """.trimIndent())
+
+                stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS Pedido (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    precioTotal DECIMAL(10, 2) NOT NULL,
+                    idUsuario INT,
+                    FOREIGN KEY (idUsuario) REFERENCES Usuario(id)
+                )
+            """.trimIndent())
+
+                stmt.executeUpdate("""
+                CREATE TABLE IF NOT EXISTS LineaPedido (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    cantidad INT NOT NULL,
+                    precio DECIMAL(10, 2) NOT NULL,
+                    idPedido INT,
+                    idProducto INT,
+                    FOREIGN KEY (idPedido) REFERENCES Pedido(id),
+                    FOREIGN KEY (idProducto) REFERENCES Producto(id)
+                )
+            """.trimIndent())
+
+                println("Tablas creadas correctamente")
+            }
         }
     }
 
