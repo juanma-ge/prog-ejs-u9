@@ -75,6 +75,43 @@ object DataBase {
         }
     }
 
+    fun updateDatabase(){
+        getConnection().use { conn ->
+            conn?.createStatement()?.executeUpdate("""
+            INSERT INTO Usuario (nombre, email) VALUES
+            ('Facundo Pérez', 'facuper@mail.com'),
+            ('Ataulfo Rodríguez', 'ataurod@mail.com'),
+            ('Cornelio Ramírez', 'Cornram@mail.com')
+        """)
+
+            conn?.createStatement()?.executeUpdate("""
+            INSERT INTO Producto (nombre, precio, stock) VALUES
+            ('Ventilador', 10.00, 2),
+            ('Abanico', 150.00, 47),
+            ('Estufa', 24.99, 1)
+        """)
+
+            conn?.createStatement()?.executeUpdate("""
+            INSERT INTO Pedido (idUsuario, precioTotal) VALUES
+            (2, 160.00),
+            (1, 20.00),
+            (2, 150.00)
+        """)
+
+            conn?.createStatement()?.executeUpdate("""
+            INSERT INTO LineaPedido (idPedido, idProducto, cantidad, precio) VALUES
+            (1, 1, 1, 10.00),
+            (1, 2, 1, 150.00),
+            (2, 1, 2, 20.00),
+            (3, 2, 1, 150.00)
+        """)
+
+            conn?.close()
+            println("Base de datos creada y datos insertados correctamente")
+
+        }
+    }
+
     fun createUser(name: String, email: String) {
         getConnection().use { conn ->
             val stmt = conn?.prepareStatement("INSERT INTO users (name, email) VALUES (?, ?)")
