@@ -6,6 +6,6 @@ fun main(){
 
     DataBase.getConnection()
     DataBase.initDatabase()
-
+    DataBase.updateDatabase()
 
 }
