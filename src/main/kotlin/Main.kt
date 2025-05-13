@@ -2,6 +2,7 @@ package org.example
 
 import org.example.app.ConsLinPedido
 import org.example.app.ConsPedido
+import org.example.app.ConsProducto
 import org.example.app.ConsUsuario
 import org.example.data.DataBase
 
@@ -13,12 +14,14 @@ fun main(){
     DataBase.updateDatabase()
      */
 
+
     val lp = ConsLinPedido()
     val pe = ConsPedido()
     val us = ConsUsuario()
+    val pr = ConsProducto()
 
-    lp.obtenerLineasPedido1()
-    pe.mostrarImporte()
-    us.mostrarUsuarios()
+    pe.eliminarPedido()
+    us.eliminarUsuario()
+    pr.eliminarProducto()
 
 }
