@@ -35,4 +35,28 @@ class ConsProducto {
         }
     }
 
+    /**
+     * Actualiza el precio del producto 'Abanico' a 120 euros.
+     *
+     * Se ejecuta una consulta en SQL para encontrar dicho producto y actualizar su precio.
+     * En caso de error o excepción se capturará.
+     */
+    fun modificarPrecio() {
+        try{
+            getConnection()?.use { conn ->
+                conn.createStatement().use { stmt ->
+                    stmt.executeUpdate("""
+                UPDATE Producto 
+                SET precio = 120.00 
+                WHERE nombre = 'Abanico'
+            """.trimIndent())
+
+                    println("Precio del Abanico actualizado a 120€")
+                }
+            }
+        }catch (e: SQLException){
+            println("Error al intentar actualizar el producto: ${e.message}")
+        }
+    }
+
 }
