@@ -1,6 +1,7 @@
 package org.example.app
 
 import org.example.data.DataBase.getConnection
+import java.sql.SQLException
 
 class ConsPedido {
 
@@ -28,6 +29,35 @@ class ConsPedido {
         rs?.close()
         conn?.close()
         stmt?.close()
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    fun eliminarPedido(){
+        try{
+            val conn = getConnection()
+
+            conn?.prepareStatement("""
+                DELETE FROM LINEAPEDIDO
+                WHERE IDPEDIDO = ?
+            """.trimIndent()).use { stmt ->
+                stmt?.setInt(1, 3)
+                stmt?.executeUpdate()
+            }
+
+            conn?.prepareStatement("""
+                DELETE FROM PEDIDO 
+                WHERE ID = ?
+            """.trimIndent()).use { stmt ->
+                stmt?.setInt(1, 3)
+                stmt?.executeUpdate()
+            }
+        }catch (e: SQLException){
+            println("Error al eliminar el pedido: ${e.message}")
+        }
     }
 
 }
