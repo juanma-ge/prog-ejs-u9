@@ -42,9 +42,10 @@ class ConsPedido {
     }
 
     /**
+     * Elimina el pedido con id igual a '3'.
      *
-     *
-     *
+     * Se ejecuta una consulta en SQL para encontrar el pedido y eliminarlo.
+     * En caso de error o excepción se capturará.
      */
     fun eliminarPedido(){
         try{
