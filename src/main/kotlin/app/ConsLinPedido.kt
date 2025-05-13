@@ -1,6 +1,7 @@
 package org.example.app
 
 import org.example.data.DataBase.getConnection
+import java.sql.SQLException
 
 class ConsLinPedido {
 
@@ -25,6 +26,25 @@ class ConsLinPedido {
         rs?.close()
         stmt?.close()
         conn?.close()
+    }
+
+    fun actualizarLineaPedido() {
+        try {
+            getConnection()?.use { conn ->
+                conn.createStatement().use { stmt ->
+                    stmt.executeUpdate("""
+                    UPDATE LineaPedido 
+                    SET idProducto = 2,       
+                        precio = 240.00         
+                    WHERE id = 3                
+                """.trimIndent())
+
+                    println("Línea de pedido 3 actualizada.")
+                }
+            }
+        } catch (e: SQLException) {
+            println("Error al actualizar la línea de pedido: ${e.message}")
+        }
     }
 
 }

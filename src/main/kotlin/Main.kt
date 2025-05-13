@@ -21,6 +21,6 @@ fun main(){
     val us = ConsUsuario()
     val pr = ConsProducto()
 
-    DataBase.reiniciarDatabase()
+    lp.actualizarLineaPedido()
 
 }
