@@ -35,4 +35,34 @@ class ConsUsuario {
         }
     }
 
+    /**
+     * Elimina el usuario 'Cornelio Ramírez' de la base de datos.
+     *
+     * Se ejecuta una consulta en SQL para encontrar al usuario.
+     * En caso de error o excepción se capturará.
+     */
+    fun eliminarUsuario(){
+        try {
+            val conn = getConnection()
+
+            val stmt = conn?.prepareStatement("""
+            DELETE FROM Usuario
+            WHERE NOMBRE = ?
+        """.trimIndent())
+            stmt?.setString(1, "Cornelio Ramírez")
+
+            val rowsAffected = stmt?.executeUpdate()
+
+            if (rowsAffected != null) {
+                if (rowsAffected > 0) {
+                    println("El usuario 'Cornelio Ramirez' ha sido eliminado correctamente.")
+                } else {
+                    println("No se encontró el usuario 'Cornelio Ramírez' para eliminar.")
+                }
+            }
+        }catch (e: SQLException){
+            println("Error al eliminar al usuario: ${e.message}")
+        }
+    }
+
 }

@@ -41,4 +41,33 @@ class ConsPedido {
         }
     }
 
+    /**
+     *
+     *
+     *
+     */
+    fun eliminarPedido(){
+        try{
+            val conn = getConnection()
+
+            conn?.prepareStatement("""
+                DELETE FROM LINEAPEDIDO
+                WHERE IDPEDIDO = ?
+            """.trimIndent()).use { stmt ->
+                stmt?.setInt(1, 3)
+                stmt?.executeUpdate()
+            }
+
+            conn?.prepareStatement("""
+                DELETE FROM PEDIDO 
+                WHERE ID = ?
+            """.trimIndent()).use { stmt ->
+                stmt?.setInt(1, 3)
+                stmt?.executeUpdate()
+            }
+        }catch (e: SQLException){
+            println("Error al eliminar el pedido: ${e.message}")
+        }
+    }
+
 }
