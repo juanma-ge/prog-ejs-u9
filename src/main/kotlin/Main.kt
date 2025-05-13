@@ -5,6 +5,7 @@ import org.example.app.ConsPedido
 import org.example.app.ConsProducto
 import org.example.app.ConsUsuario
 import org.example.data.DataBase
+import org.example.data.DataBase.updateDatabase
 
 fun main(){
 
@@ -20,8 +21,6 @@ fun main(){
     val us = ConsUsuario()
     val pr = ConsProducto()
 
-    pe.eliminarPedido()
-    us.eliminarUsuario()
-    pr.eliminarProducto()
+    DataBase.reiniciarDatabase()
 
 }

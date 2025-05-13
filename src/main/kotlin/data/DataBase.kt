@@ -112,6 +112,29 @@ object DataBase {
         }
     }
 
+    fun reiniciarDatabase() {
+        getConnection()?.use { conn ->
+            conn.createStatement().use { stmt ->
+                // Elimina los datos
+                stmt.executeUpdate("DELETE FROM LineaPedido")
+                stmt.executeUpdate("DELETE FROM Pedido")
+                stmt.executeUpdate("DELETE FROM Producto")
+                stmt.executeUpdate("DELETE FROM Usuario")
+
+                // Reinicia los autoincrementos
+                stmt.executeUpdate("ALTER TABLE Usuario ALTER COLUMN id RESTART WITH 1")
+                stmt.executeUpdate("ALTER TABLE Producto ALTER COLUMN id RESTART WITH 1")
+                stmt.executeUpdate("ALTER TABLE Pedido ALTER COLUMN id RESTART WITH 1")
+                stmt.executeUpdate("ALTER TABLE LineaPedido ALTER COLUMN id RESTART WITH 1")
+
+                // Inserta los datos iniciales
+                updateDatabase()
+
+                println("Datos reinicializados completamente")
+            }
+        }
+    }
+
     fun createUser(name: String, email: String) {
         getConnection().use { conn ->
             val stmt = conn?.prepareStatement("INSERT INTO users (name, email) VALUES (?, ?)")
