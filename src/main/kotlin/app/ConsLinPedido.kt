@@ -28,6 +28,14 @@ class ConsLinPedido {
         conn?.close()
     }
 
+    /**
+     * Actualiza la línea de pedido con id igual a 3.
+     * Cambia el producto a abanico, con id idugal a 2.
+     * Se duplica el precio del abanico, es decir 2 * 120, 240.
+     *
+     * Se ejecuta una consulta en SQL para encontrar la línea de pedido esperada y modificarla.
+     * En caso de error o excepción se capturará.
+     */
     fun actualizarLineaPedido() {
         try {
             getConnection()?.use { conn ->
