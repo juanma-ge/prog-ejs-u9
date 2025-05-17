@@ -5,6 +5,12 @@ import java.sql.SQLException
 
 class ConsUsuario {
 
+    /**
+     * Muestra todos los usuarios los cuales hayan comprado el producto 'Abanico'.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     fun mostrarUsuarios(){
         val conn = getConnection()
 

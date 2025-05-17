@@ -5,6 +5,12 @@ import java.sql.SQLException
 
 class ConsLinPedido {
 
+    /**
+     * Obtiene las líneas de pedido del id '1' en este caso.
+     *
+     * Se ejecuta una consulta en SQL para encontrar el producto y sus líneas de pedido.
+     * En caso de error o excepción se capturará.
+     */
     fun obtenerLineasPedido1() {
         val conn = getConnection()
 

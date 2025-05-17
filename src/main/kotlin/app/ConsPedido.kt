@@ -5,6 +5,12 @@ import java.sql.SQLException
 
 class ConsPedido {
 
+    /**
+     * Muestra el importe total de los pedidos realizados por el usuario 'Ataulfo Rodríguez'.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los pedidos del usuario y sumarlos.
+     * En caso de error o excepción se capturará.
+     */
     fun mostrarImporte(){
         val conn = getConnection()
 
