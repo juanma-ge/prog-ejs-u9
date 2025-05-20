@@ -1,19 +1,65 @@
 package org.example.data
 
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import org.example.model.User
+import org.h2.engine.DbObject.USER
+import org.h2.jdbcx.JdbcConnectionPool
+import org.h2.jdbcx.JdbcDataSource
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
+import javax.sql.DataSource
+
 
 object DataBase {
 
-    const val DB_URL = "jdbc:h2:./data/tienda"
-    const val USER = "sa"
-    const val PASS = ""
+    val jdbcUrl = "jdbc:h2:./data/tiendaHikari"
+    val username = "sa"
+    val DBpassword = ""
 
-    fun getConnection(): Connection? {
+    val DB_URL = "jdbc:h2:./data/tiendaHikari"
+    val USER = "sa"
+    val PASS = ""
+
+    enum class Modo {
+        HIKARI, SIMPLE
+    }
+
+    fun getDataSource(modo: Modo = Modo.SIMPLE): DataSource {
+        return when (modo) {
+            Modo.HIKARI -> {
+                val configuraciones = HikariDataSource().apply {
+                    jdbcUrl = jdbcUrl
+                    username = username
+                    password = DBpassword
+                    driverClassName = "org.h2.Driver"
+                    maximumPoolSize = 3
+                }
+                HikariDataSource(configuraciones)
+            }
+            Modo.SIMPLE -> {
+                JdbcDataSource().apply {
+                    setUrl(jdbcUrl)
+                    user = username
+                    password = password
+                }
+            }
+        }
+    }
+
+    fun getConnection(modo: Modo = Modo.SIMPLE): Connection? {
         return try {
-            DriverManager.getConnection(DB_URL, USER, PASS)
+            when (modo) {
+                Modo.HIKARI -> {
+                    getDataSource(Modo.HIKARI).connection.apply {
+                        autoCommit = false
+                    }
+                }
+                Modo.SIMPLE -> {
+                    DriverManager.getConnection(DB_URL, USER, PASS)
+                }
+            }
         } catch (e: SQLException) {
             System.err.println("Error al conectar a la base de datos: ${e.message}")
             null

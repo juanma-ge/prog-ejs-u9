@@ -38,4 +38,31 @@ class ConsLinPedido {
         }
     }
 
+    /**
+     * Actualiza la línea de pedido con id igual a 3.
+     * Cambia el producto a abanico, con id idugal a 2.
+     * Se duplica el precio del abanico, es decir 2 * 120, 240.
+     *
+     * Se ejecuta una consulta en SQL para encontrar la línea de pedido esperada y modificarla.
+     * En caso de error o excepción se capturará.
+     */
+    fun actualizarLineaPedido() {
+        try {
+            getConnection()?.use { conn ->
+                conn.createStatement().use { stmt ->
+                    stmt.executeUpdate("""
+                    UPDATE LineaPedido 
+                    SET idProducto = 2,       
+                        precio = 240.00         
+                    WHERE id = 3                
+                """.trimIndent())
+
+                    println("Línea de pedido 3 actualizada.")
+                }
+            }
+        } catch (e: SQLException) {
+            println("Error al actualizar la línea de pedido: ${e.message}")
+        }
+    }
+
 }
