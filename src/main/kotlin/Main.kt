@@ -21,7 +21,6 @@ fun main(){
     val us = ConsUsuario()
     val pr = ConsProducto()
 
-    db.initDatabase()
-    db.updateDatabase()
+    pe.eliminarPedido()
 
 }

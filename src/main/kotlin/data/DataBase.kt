@@ -1,10 +1,7 @@
 package org.example.data
 
-import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.example.model.User
-import org.h2.engine.DbObject.USER
-import org.h2.jdbcx.JdbcConnectionPool
 import org.h2.jdbcx.JdbcDataSource
 import java.sql.Connection
 import java.sql.DriverManager
@@ -14,11 +11,11 @@ import javax.sql.DataSource
 
 object DataBase {
 
-    val jdbcUrl = "jdbc:h2:./data/tiendaHikari"
+    val jdbcUrl = "jdbc:h2:./data/tienda"
     val username = "sa"
     val DBpassword = ""
 
-    val DB_URL = "jdbc:h2:./data/tiendaHikari"
+    val DB_URL = "jdbc:h2:./data/tienda"
     val USER = "sa"
     val PASS = ""
 
