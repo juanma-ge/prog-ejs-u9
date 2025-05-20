@@ -15,12 +15,13 @@ fun main(){
     DataBase.updateDatabase()
      */
 
-
+    val db = DataBase
     val lp = ConsLinPedido()
     val pe = ConsPedido()
     val us = ConsUsuario()
     val pr = ConsProducto()
 
-    lp.actualizarLineaPedido()
+    db.initDatabase()
+    db.updateDatabase()
 
 }
