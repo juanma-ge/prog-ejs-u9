@@ -6,5 +6,6 @@ interface IConsLinPedido {
     fun mostrarSumaImporte(name: String)
     fun eliminarLinPedido(idPedido: Int)
     fun modificarLinPedido(id: Int, idProducto: Int)
+    fun insertarLinPedido(cantidad: Int, precio: Double, idPedido: Int, idProducto: Int)
 
 }

@@ -62,7 +62,7 @@ class ConsProducto: IConsProducto {
         }
     }
 
-    override fun eliminarProducto(precio: Double) {
+    override fun eliminarProducto(nombre: String, precio: Double, stock: Int) {
         try {
             val sql = """DELETE FROM Producto WHERE precio = ?;"""
                 getConnection()?.use { conn ->
@@ -109,6 +109,22 @@ class ConsProducto: IConsProducto {
                 getConnection()?.use { conn ->
 
                 }
+        }catch (e: SQLException) {
+            throw e
+        }
+    }
+
+    override fun insertarProducto(nombre: String, precio: Double, stock: Int) {
+        try {
+            val sql = """INSERT INTO Producto (nombre, precio, stock) VALUES (?, ?, ?)"""
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    stmt.setString(1, nombre)
+                    stmt.setDouble(2, precio)
+                    stmt.setInt(3, stock)
+                    stmt.executeUpdate(sql)
+                }
+            }
         }catch (e: SQLException) {
             throw e
         }

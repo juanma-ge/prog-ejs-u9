@@ -1,6 +1,8 @@
 package org.example.service
 
-class LineaPedidoService: ILineaPedidoService {
+import org.example.data.dao.ConsLinPedido
+
+class LineaPedidoService(ConsLinPedido: ConsLinPedido): ILineaPedidoService {
     override fun insertarLinPedido(cantidad: Int, precio: Double, idpedido: Int, idproducto: Int) {
         TODO("Not yet implemented")
     }

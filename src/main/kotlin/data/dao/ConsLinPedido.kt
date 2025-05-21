@@ -136,4 +136,21 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
         }
     }
 
+    override fun insertarLinPedido(cantidad: Int, precio: Double, idPedido: Int, idProducto: Int) {
+        try {
+            val sql = """INSERT INTO LinPedido (cantidad, precio, idPedido, idproducto) VALUES (?, ?, ? , ?)"""
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    stmt.setInt(1, cantidad)
+                    stmt.setDouble(2, precio)
+                    stmt.setInt(3, idPedido)
+                    stmt.setInt(4, idProducto)
+                    stmt.executeUpdate(sql)
+                }
+            }
+        }catch (e: SQLException) {
+            throw e
+        }
+    }
+
 }

@@ -84,4 +84,19 @@ class ConsPedido: IConsPedido {
         }
     }
 
+    override fun insertarPedido(precioTotal: Double, idUsuario: Int) {
+        try {
+            val sql = """INSERT INTO Pedido (precioTotal, idUsuario) VALUES (?, ?)"""
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    stmt.setDouble(1, precioTotal)
+                    stmt.setInt(2, idUsuario)
+                    stmt.executeUpdate(sql)
+                }
+            }
+        }catch (e: SQLException) {
+            throw e
+        }
+    }
+
 }

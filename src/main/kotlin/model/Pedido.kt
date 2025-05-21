@@ -1,3 +1,3 @@
 package org.example.model
 
-data class Pedido(val preciototal: Double, val idusuario: Int)
+data class Pedido(val precioTotal: Double, val idusuario: Int)

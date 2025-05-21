@@ -1,11 +1,14 @@
 package org.example.service
 
-class ProductoService: IProductoService {
-    override fun insertarProducto(nombre: String, precio: Int, stock: Int) {
-        TODO("Not yet implemented")
+import org.example.data.dao.IConsProducto
+
+class ProductoService(val consProducto: IConsProducto): IProductoService {
+
+    override fun insertarProducto(nombre: String, precio: Double, stock: Int) {
+        consProducto.insertarProducto(nombre, precio, stock)
     }
 
-    override fun eliminarProducto(nombre: String, precio: Int, stock: Int) {
-        TODO("Not yet implemented")
+    override fun eliminarProducto(nombre: String, precio: Double, stock: Int) {
+        consProducto.eliminarProducto(nombre, precio, stock)
     }
 }
