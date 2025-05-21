@@ -1,8 +1,9 @@
 # Práctica 9.1: Acceso a datos I
 ## Introducción 
-El programa se ha dividido en 6 ramas, las cuales cada una complementa a cada uno de los ejercicios.
+- El programa se ha dividido en 6 ramas, las cuales cada una complementa a cada uno de los ejercicios.
+- Debido a que en el último ejercicio se utiliza Hikari, y lo he utilizado en el mismo 'DataBase', se utiliza también aquí, fallo técnico, pero se puede ver el commit anterior si no se quiere ver utilizado por Hikari. 
 ## Ejercicio 1
-- El primeer ejercicio consta simplemente de instalar la base H2 y conectarla.
+- El primer ejercicio consta simplemente de instalar la base H2 y conectarla.
 - Instalamos las dependencias necessrias.
 https://github.com/juanma-ge/prog-ejs-u9/blob/2882b0fbac951ade1a2fadf04ddd563198cf257f/build.gradle.kts#L14
 - Establecemos un PATH por donde se va a conectar con la base de datos, donde posteriormente se insertarán las tablas.
