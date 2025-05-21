@@ -3,7 +3,7 @@ package org.example.data.dao
 import org.example.data.DataBase.getConnection
 import java.sql.SQLException
 
-class ConsUsuario {
+class ConsUsuario: IConsUsuario {
 
     /**
      * Muestra todos los usuarios los cuales hayan comprado el producto 'Abanico'.
@@ -58,6 +58,57 @@ class ConsUsuario {
             }
         }catch (e: SQLException){
             println("Error al eliminar al usuario: ${e.message}")
+        }
+    }
+
+    override fun mostrarNombreUsuario(nombre: String) {
+        try {
+            val sql = """
+                SELECT DISTINCT u.nombre
+                FROM Usuario u
+                JOIN Pedido p ON u.id = p.idUsuario
+                JOIN LineaPedido lp ON p.id = lp.idPedido
+                JOIN Producto pr ON lp.idProducto = pr.id
+                WHERE pr.nombre = ?;
+            """.trimIndent()
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun eliminaUsuario(nombre: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun insertarUsuario(nombre: String, email: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun mostrarPedidosRealizados(nombre: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
         }
     }
 

@@ -1,9 +1,13 @@
 package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
+import org.example.ui.Console
 import java.sql.SQLException
+import javax.sql.DataSource
 
-class ConsLinPedido {
+class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
+
+    val ui = Console()
 
     /**
      * Obtiene las líneas de pedido del id '1' en este caso.
@@ -60,5 +64,62 @@ class ConsLinPedido {
             println("Error al actualizar la línea de pedido: ${e.message}")
         }
     }
+
+    override fun mostrarLinPedido(id: Int, idPedido: Int) {
+        try {
+            val sql = """
+                        SELECT * FROM LineaPedido WHERE idPedido = ?;
+                    """
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    stmt.executeUpdate(sql)
+                }
+            }
+
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun mostrarSumaImporte(name: String) {
+        try {
+            val sql = """
+                SELECT SUM(p.precioTotal) AS total_gastado
+                FROM Pedido p
+                JOIN Usuario u ON p.idUsuario = u.id
+                WHERE u.nombre = ?;
+            """.trimIndent()
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    stmt.executeUpdate(sql)
+                }
+            }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun eliminarLinPedido(id: Int) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun modificarLinPedido(id: Int, precio: Double) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
 
 }

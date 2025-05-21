@@ -3,7 +3,7 @@ package org.example.data.dao
 import org.example.data.DataBase.getConnection
 import java.sql.SQLException
 
-class ConsPedido {
+class ConsPedido: IConsPedido {
 
     /**
      * Muestra el importe total de los pedidos realizados por el usuario 'Ataulfo Rodríguez'.
@@ -64,6 +64,17 @@ class ConsPedido {
             }
         }catch (e: SQLException){
             println("Error al eliminar el pedido: ${e.message}")
+        }
+    }
+
+    override fun eliminarPedido(id: Int) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
         }
     }
 

@@ -1,6 +1,6 @@
 package org.example.ui
 
-class Console: IConsoleUI {
+class Console: IConsole {
 
     override fun mostrar(texto: String, saltoLinea: Boolean) {
         print("$texto${if (saltoLinea) "\n" else ""}")

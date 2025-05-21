@@ -3,7 +3,7 @@ package org.example.data.dao
 import org.example.data.DataBase.getConnection
 import java.sql.SQLException
 
-class ConsProducto {
+class ConsProducto: IConsProducto {
 
     /**
      * Elimina el producto o productos los cuales tengan el mismo precio que el indicado.
@@ -56,6 +56,50 @@ class ConsProducto {
             }
         }catch (e: SQLException){
             println("Error al intentar actualizar el producto: ${e.message}")
+        }
+    }
+
+    override fun eliminarProducto(precio: Double) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun modificarPrecioOferta(nombre: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun cambiarNombreProducto(nombre: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
+        }
+    }
+
+    override fun modificarPrecioProductoDoble(nombre: String) {
+        try {
+            val sql =
+                getConnection()?.use { conn ->
+
+                }
+        }catch (e: SQLException) {
+
         }
     }
 

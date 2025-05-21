@@ -1,4 +1,4 @@
 package org.example.service
 
-class IUsuarioService {
+interface IUsuarioService {
 }

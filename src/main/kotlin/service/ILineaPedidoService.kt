@@ -1,4 +1,4 @@
 package org.example.service
 
-class ILineaPedidoService {
+interface ILineaPedidoService {
 }

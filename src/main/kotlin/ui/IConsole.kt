@@ -1,6 +1,6 @@
 package org.example.ui
 
-interface IConsoleUI {
+interface IConsole {
 
     fun mostrar(texto: String, saltoLinea: Boolean = true)
     fun leer(prompt: String = "", saltoLinea: Boolean = false): String
