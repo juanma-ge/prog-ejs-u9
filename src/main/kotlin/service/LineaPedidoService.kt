@@ -10,4 +10,8 @@ class LineaPedidoService(val consLinPedido: ConsLinPedido): ILineaPedidoService 
     override fun eliminarLinPedido(cantidad: Int, precio: Double, idpedido: Int, idproducto: Int) {
         consLinPedido.eliminarLinPedido(cantidad)
     }
+
+    override fun modificarLinPedido(cantidad: Int, precio: Double, idpedido: Int, idproducto: Int) {
+        consLinPedido.modificarLinPedido(cantidad, idproducto)
+    }
 }
