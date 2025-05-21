@@ -1,4 +1,4 @@
-package org.example.app
+package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
 import java.sql.SQLException

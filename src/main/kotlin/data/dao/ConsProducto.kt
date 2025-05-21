@@ -1,4 +1,4 @@
-package org.example.app
+package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
 import java.sql.SQLException
@@ -16,7 +16,7 @@ class ConsProducto {
             val conn = getConnection()
 
             val stmt = conn?.prepareStatement("""
-                DELETE FROM PRODUCTO 
+                DELETE FROM PRODUCTO    
                 WHERE PRECIO = ?
             """.trimIndent())
             stmt?.setDouble(1, 24.99)
