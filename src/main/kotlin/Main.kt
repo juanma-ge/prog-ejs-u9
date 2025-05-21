@@ -1,10 +1,10 @@
 package org.example
 
 import org.example.data.dao.ConsLinPedido
-import org.example.app.ConsPedido
 import org.example.data.dao.ConsProducto
 import org.example.data.dao.ConsUsuario
 import org.example.data.DataBase
+import org.example.data.dao.ConsPedido
 
 fun main(){
 
