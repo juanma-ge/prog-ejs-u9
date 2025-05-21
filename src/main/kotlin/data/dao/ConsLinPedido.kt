@@ -72,12 +72,13 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
                     """
             getConnection()?.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
+                    stmt.setInt(1, idPedido)
                     stmt.executeUpdate(sql)
                 }
             }
 
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
@@ -91,35 +92,48 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
             """.trimIndent()
             getConnection()?.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
+                    stmt.setString(1, name)
                     stmt.executeUpdate(sql)
                 }
             }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
-    override fun eliminarLinPedido(id: Int) {
+    override fun eliminarLinPedido(idPedido: Int) {
         try {
-            val sql =
+            val sql = """DELETE FROM LineaPedido WHERE idPedido = ?;"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setInt(1, idPedido)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
-    override fun modificarLinPedido(id: Int, precio: Double) {
+    override fun modificarLinPedido(id: Int, idProducto: Int) {
         try {
-            val sql =
+            val sql = """
+                UPDATE LineaPedido
+                SET 
+                    idProducto = ?,
+                    precio = (SELECT precio * 2 FROM Producto WHERE id = ?)
+                WHERE id = ?;
+            """.trimIndent()
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setInt(1, idProducto)
+                        stmt.setInt(2, id)
+                        stmt.setInt(3, id)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
-
 
 }

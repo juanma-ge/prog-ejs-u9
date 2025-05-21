@@ -1,9 +1,12 @@
 package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
+import org.example.ui.Console
 import java.sql.SQLException
 
 class ConsPedido: IConsPedido {
+
+    val ui = Console()
 
     /**
      * Muestra el importe total de los pedidos realizados por el usuario 'Ataulfo Rodríguez'.
@@ -69,12 +72,15 @@ class ConsPedido: IConsPedido {
 
     override fun eliminarPedido(id: Int) {
         try {
-            val sql =
+            val sql = """DELETE FROM Pedido WHERE id = ?;"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setInt(1, id)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 

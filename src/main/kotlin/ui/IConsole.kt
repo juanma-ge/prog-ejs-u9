@@ -2,7 +2,7 @@ package org.example.ui
 
 interface IConsole {
 
-    fun mostrar(texto: String, saltoLinea: Boolean = true)
+    fun mostrar(texto: String)
     fun leer(prompt: String = "", saltoLinea: Boolean = false): String
     fun mostrarError(mensaje: String, saltoLinea: Boolean = true)
     fun saltoLinea()

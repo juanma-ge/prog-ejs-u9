@@ -1,9 +1,12 @@
 package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
+import org.example.ui.Console
 import java.sql.SQLException
 
 class ConsUsuario: IConsUsuario {
+
+    val ui = Console()
 
     /**
      * Muestra todos los usuarios los cuales hayan comprado el producto 'Abanico'.
@@ -72,43 +75,79 @@ class ConsUsuario: IConsUsuario {
                 WHERE pr.nombre = ?;
             """.trimIndent()
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
     override fun eliminaUsuario(nombre: String) {
         try {
-            val sql =
+            val sql ="""DELETE FROM Usuario WHERE nombre = ?;"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
     override fun insertarUsuario(nombre: String, email: String) {
         try {
-            val sql =
+            val sql = """INSERT INTO Usuario (nombre, email) VALUES (?, ?)"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.setString(2, email)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
     override fun mostrarPedidosRealizados(nombre: String) {
         try {
-            val sql =
+            val sql = """
+            SELECT p.id, p.precioTotal 
+            FROM Pedido p
+            JOIN Usuario u ON p.idUsuario = u.id
+            WHERE u.nombre = ?;
+            """.trimIndent()
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.executeQuery(sql)
+                    }
                 }
         }catch (e: SQLException) {
+            ui.mostrar(e.toString())
+        }
+    }
 
+    fun mostrarPedidosRealizadosUsuario(nombre: String, email: String) {
+        try {
+            val sql = """
+            SELECT p.id, p.precioTotal 
+            FROM Pedido p
+            JOIN Usuario u ON p.idUsuario = u.id
+            WHERE u.nombre = 'Facundo Pérez';
+            """.trimIndent()
+                getConnection()?.use { conn ->
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.executeUpdate(sql)
+                    }
+                }
+        }catch (e: SQLException) {
+            ui.mostrar(e.toString())
         }
     }
 

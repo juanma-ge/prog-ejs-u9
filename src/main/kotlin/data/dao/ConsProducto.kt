@@ -1,9 +1,12 @@
 package org.example.data.dao
 
 import org.example.data.DataBase.getConnection
+import org.example.ui.Console
 import java.sql.SQLException
 
 class ConsProducto: IConsProducto {
+
+    val ui = Console()
 
     /**
      * Elimina el producto o productos los cuales tengan el mismo precio que el indicado.
@@ -61,23 +64,31 @@ class ConsProducto: IConsProducto {
 
     override fun eliminarProducto(precio: Double) {
         try {
-            val sql =
+            val sql = """DELETE FROM Producto WHERE precio = ?;"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setDouble(1, precio)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
     override fun modificarPrecioOferta(nombre: String) {
         try {
-            val sql =
+            val sql = """UPDATE Producto 
+                        SET precio = 120 
+                        WHERE nombre = ?;"""
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
@@ -88,7 +99,7 @@ class ConsProducto: IConsProducto {
 
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 
@@ -99,7 +110,7 @@ class ConsProducto: IConsProducto {
 
                 }
         }catch (e: SQLException) {
-
+            ui.mostrar(e.toString())
         }
     }
 

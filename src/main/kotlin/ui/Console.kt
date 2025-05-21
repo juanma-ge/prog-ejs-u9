@@ -2,17 +2,17 @@ package org.example.ui
 
 class Console: IConsole {
 
-    override fun mostrar(texto: String, saltoLinea: Boolean) {
-        print("$texto${if (saltoLinea) "\n" else ""}")
+    override fun mostrar(texto: String) {
+        print(texto)
     }
 
     override fun leer(prompt: String, saltoLinea: Boolean): String {
-        if (prompt.isNotBlank()) mostrar(prompt, saltoLinea)
+        if (prompt.isNotBlank()) mostrar(prompt)
         return readln()
     }
 
     override fun mostrarError(mensaje: String, saltoLinea: Boolean) {
-        mostrar("# ERROR! => $mensaje", saltoLinea)
+        mostrar("# ERROR! => $mensaje")
     }
 
     override fun saltoLinea() {
@@ -22,7 +22,7 @@ class Console: IConsole {
     override fun limpiar(lineas: Int) {
         if (System.console() != null) {
             // Terminal real: limpia con ANSI
-            mostrar("\u001B[H\u001B[2J", false)
+            mostrar("\u001B[H\u001B[2J")
             System.out.flush()
         } else {
             // Probablemente ejecutando en un IDE
