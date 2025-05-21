@@ -46,7 +46,7 @@ class ConsPedido: IConsPedido {
      * Se ejecuta una consulta en SQL para encontrar el pedido y eliminarlo.
      * En caso de error o excepción se capturará.
      */
-    fun eliminarPedido(){
+    fun eliminarPedido(preciototal: Double, idusuario: Int) {
         try{
             val conn = getConnection()
 
@@ -70,7 +70,7 @@ class ConsPedido: IConsPedido {
         }
     }
 
-    override fun eliminarPedido(id: Int) {
+    override fun eliminarPedidoPorUsuario(id: Int) {
         try {
             val sql = """DELETE FROM Pedido WHERE id = ?;"""
                 getConnection()?.use { conn ->

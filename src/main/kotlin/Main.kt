@@ -20,6 +20,6 @@ fun main(){
     val us = ConsUsuario()
     val pr = ConsProducto()
 
-    pe.eliminarPedido()
+    pe.eliminarPedido(preciototal, idusuario)
 
 }

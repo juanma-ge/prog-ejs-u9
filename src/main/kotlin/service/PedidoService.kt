@@ -2,12 +2,12 @@ package org.example.service
 
 import org.example.data.dao.ConsPedido
 
-class PedidoService(ConsPedido: ConsPedido): IPedidoService {
+class PedidoService(val consPedido: ConsPedido): IPedidoService {
     override fun insertarPedido(preciototal: Double, idusuario: Int) {
-        TODO("Not yet implemented")
+        consPedido.insertarPedido(preciototal, idusuario)
     }
 
     override fun eliminarPedido(preciototal: Double, idusuario: Int) {
-        TODO("Not yet implemented")
+        consPedido.eliminarPedido(preciototal, idusuario)
     }
 }

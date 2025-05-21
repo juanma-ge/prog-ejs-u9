@@ -5,7 +5,7 @@ import org.example.model.Pedido
 interface IConsPedido {
 
 
-    fun eliminarPedido(id: Int)
+    fun eliminarPedidoPorUsuario(id: Int)
     fun insertarPedido(precioTotal: Double, idUsuario: Int)
 
 }
