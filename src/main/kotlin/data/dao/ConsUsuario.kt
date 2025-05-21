@@ -81,7 +81,7 @@ class ConsUsuario: IConsUsuario {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -95,7 +95,7 @@ class ConsUsuario: IConsUsuario {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -110,7 +110,7 @@ class ConsUsuario: IConsUsuario {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -129,7 +129,7 @@ class ConsUsuario: IConsUsuario {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -147,7 +147,7 @@ class ConsUsuario: IConsUsuario {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 

@@ -72,7 +72,7 @@ class ConsProducto: IConsProducto {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -88,7 +88,7 @@ class ConsProducto: IConsProducto {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -99,7 +99,7 @@ class ConsProducto: IConsProducto {
 
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -110,7 +110,7 @@ class ConsProducto: IConsProducto {
 
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 

@@ -78,7 +78,7 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
             }
 
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -97,7 +97,7 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
                 }
             }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -111,7 +111,7 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
@@ -132,7 +132,7 @@ class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 

@@ -80,7 +80,7 @@ class ConsPedido: IConsPedido {
                     }
                 }
         }catch (e: SQLException) {
-            ui.mostrar(e.toString())
+            throw e
         }
     }
 
