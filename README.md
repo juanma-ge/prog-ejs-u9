@@ -1,5 +1,6 @@
 # Práctica 9.1: Acceso a datos I
 ## Introducción 
+- Por temas de limpieza y facilidad, he creado un readme por rama, es decir, por ejercicio.
 - El programa se ha dividido en 6 ramas, las cuales cada una complementa a cada uno de los ejercicios.
 - Debido a que en el último ejercicio se utiliza Hikari, y lo he utilizado en el mismo 'DataBase', se utiliza también aquí, fallo técnico, pero se puede ver el commit anterior si no se quiere ver utilizado por Hikari. 
 ## Ejercicio 1
