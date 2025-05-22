@@ -8,7 +8,11 @@ class ProductoService(val consProducto: IConsProducto): IProductoService {
         consProducto.insertarProducto(nombre, precio, stock)
     }
 
-    override fun eliminarProducto(nombre: String, precio: Double, stock: Int) {
-        consProducto.eliminarProducto(nombre, precio, stock)
+    override fun eliminarProducto(precio: Double) {
+        consProducto.eliminarProducto(precio)
+    }
+
+    override fun modificarPrecioAOferta(nombre: String, precio: Double) {
+        consProducto.modificarPrecioOferta(nombre, precio)
     }
 }

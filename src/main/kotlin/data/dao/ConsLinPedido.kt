@@ -5,7 +5,7 @@ import org.example.ui.Console
 import java.sql.SQLException
 import javax.sql.DataSource
 
-class ConsLinPedido(dataSource: DataSource): IConsLinPedido {
+class ConsLinPedido(): IConsLinPedido {
 
     val ui = Console()
 

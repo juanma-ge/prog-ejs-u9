@@ -2,9 +2,9 @@ package org.example.data.dao
 
 interface IConsProducto {
 
-    fun eliminarProducto(nombre: String, precio: Double, stock: Int)
-    fun modificarPrecioOferta(nombre: String)
-    fun cambiarNombreProducto(nombre: String)
+    fun eliminarProducto(precio: Double)
+    fun modificarPrecioOferta(nombre: String, precio: Double)
+    fun cambiarPrecioProducto(nombre: String, idproducto: Int)
     fun modificarPrecioProductoDoble(nombre: String)
     fun insertarProducto(nombre: String, precio: Double, stock: Int)
 

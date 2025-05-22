@@ -62,7 +62,7 @@ class ConsProducto: IConsProducto {
         }
     }
 
-    override fun eliminarProducto(nombre: String, precio: Double, stock: Int) {
+    override fun eliminarProducto(precio: Double) {
         try {
             val sql = """DELETE FROM Producto WHERE precio = ?;"""
                 getConnection()?.use { conn ->
@@ -76,14 +76,15 @@ class ConsProducto: IConsProducto {
         }
     }
 
-    override fun modificarPrecioOferta(nombre: String) {
+    override fun modificarPrecioOferta(nombre: String, precio: Double) {
         try {
             val sql = """UPDATE Producto 
-                        SET precio = 120 
+                        SET precio = ? 
                         WHERE nombre = ?;"""
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
-                        stmt.setString(1, nombre)
+                        stmt.setDouble(1, precio)
+                        stmt.setString(2, nombre)
                         stmt.executeUpdate(sql)
                     }
                 }
@@ -92,11 +93,21 @@ class ConsProducto: IConsProducto {
         }
     }
 
-    override fun cambiarNombreProducto(nombre: String) {
+    override fun cambiarPrecioProducto(nombre: String, idproducto: Int) {
         try {
-            val sql =
+            val sql = """
+                UPDATE LineaPedido
+                SET 
+                    idProducto = ?,
+                    precio = (SELECT precio * 2 FROM Producto WHERE id = 2)
+                WHERE id = ?;
+            """.trimIndent()
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setInt(1, idproducto)
+                        stmt.setInt(2, idproducto)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
             throw e
@@ -105,9 +116,16 @@ class ConsProducto: IConsProducto {
 
     override fun modificarPrecioProductoDoble(nombre: String) {
         try {
-            val sql =
+            val sql = """
+                UPDATE Producto 
+                SET precio = 120 
+                WHERE nombre = ?;
+            """.trimIndent()
                 getConnection()?.use { conn ->
-
+                    conn.prepareStatement(sql).use { stmt ->
+                        stmt.setString(1, nombre)
+                        stmt.executeUpdate(sql)
+                    }
                 }
         }catch (e: SQLException) {
             throw e
