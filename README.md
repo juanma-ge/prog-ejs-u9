@@ -47,3 +47,10 @@ https://github.com/juanma-ge/prog-ejs-u9/blob/4fbe6a78b413014d4b9e7b92cb3b3719f2
 - Por último, en el main es donde se llaman a las funciones, en este caso he tratado de llenarlo lo menos posible.
 - Solamente hago una variable de app para llamarlo más fácilmente, y desde allí llamo a menu(), donde funcionará el programa.
 https://github.com/juanma-ge/prog-ejs-u9/blob/4fbe6a78b413014d4b9e7b92cb3b3719f2938b7b/src/main/kotlin/Main.kt#L5-L10
+
+## Ejercicios
+- Habalando sobre los ejercicios específicos de este apartado;
+- El primer ejercicio se realiza con la función de insertar usuario, donde en sus respectivos datos deberemos de introducir el nombre y email dados.
+https://github.com/juanma-ge/prog-ejs-u9/blob/9d67915a7dce63e228f590e4d3e3c2837c6c9551/src/main/kotlin/data/dao/ConsUsuario.kt#L114-L133
+- El segundo ejercicio debe de realizar una consulta que busque los pedidos realizados por el usuario 'Facundo Pérez'.
+https://github.com/juanma-ge/prog-ejs-u9/blob/9d67915a7dce63e228f590e4d3e3c2837c6c9551/src/main/kotlin/data/dao/ConsUsuario.kt#L160-L191
