@@ -68,7 +68,7 @@ class ConsProducto: IConsProducto {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setDouble(1, precio)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -85,7 +85,7 @@ class ConsProducto: IConsProducto {
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setDouble(1, precio)
                         stmt.setString(2, nombre)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -106,7 +106,7 @@ class ConsProducto: IConsProducto {
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setInt(1, idproducto)
                         stmt.setInt(2, idproducto)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -124,7 +124,7 @@ class ConsProducto: IConsProducto {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setString(1, nombre)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -140,7 +140,7 @@ class ConsProducto: IConsProducto {
                     stmt.setString(1, nombre)
                     stmt.setDouble(2, precio)
                     stmt.setInt(3, stock)
-                    stmt.executeUpdate(sql)
+                    stmt.executeUpdate()
                 }
             }
         }catch (e: SQLException) {

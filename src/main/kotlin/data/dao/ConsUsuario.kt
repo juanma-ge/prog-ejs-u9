@@ -77,7 +77,7 @@ class ConsUsuario: IConsUsuario {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setString(1, nombre)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -91,7 +91,7 @@ class ConsUsuario: IConsUsuario {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setString(1, nombre)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -106,7 +106,7 @@ class ConsUsuario: IConsUsuario {
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setString(1, nombre)
                         stmt.setString(2, email)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -125,7 +125,7 @@ class ConsUsuario: IConsUsuario {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setString(1, nombre)
-                        stmt.executeQuery(sql)
+                        stmt.executeQuery()
                     }
                 }
         }catch (e: SQLException) {
@@ -143,7 +143,7 @@ class ConsUsuario: IConsUsuario {
             """.trimIndent()
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {

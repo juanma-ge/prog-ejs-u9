@@ -73,7 +73,7 @@ class ConsLinPedido(): IConsLinPedido {
             getConnection()?.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
                     stmt.setInt(1, idPedido)
-                    stmt.executeUpdate(sql)
+                    stmt.executeUpdate()
                 }
             }
 
@@ -93,7 +93,7 @@ class ConsLinPedido(): IConsLinPedido {
             getConnection()?.use { conn ->
                 conn.prepareStatement(sql).use { stmt ->
                     stmt.setString(1, name)
-                    stmt.executeUpdate(sql)
+                    stmt.executeUpdate()
                 }
             }
         }catch (e: SQLException) {
@@ -107,7 +107,7 @@ class ConsLinPedido(): IConsLinPedido {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setInt(1, idPedido)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -129,6 +129,7 @@ class ConsLinPedido(): IConsLinPedido {
                         stmt.setInt(1, idProducto)
                         stmt.setInt(2, id)
                         stmt.setInt(3, id)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -145,7 +146,7 @@ class ConsLinPedido(): IConsLinPedido {
                     stmt.setDouble(2, precio)
                     stmt.setInt(3, idPedido)
                     stmt.setInt(4, idProducto)
-                    stmt.executeUpdate(sql)
+                    stmt.executeUpdate()
                 }
             }
         }catch (e: SQLException) {

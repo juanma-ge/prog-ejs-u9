@@ -17,12 +17,12 @@ class Aplicacion {
         var opcion: Int
         do {
             ui.mostrar("\n=== MENÚ PRINCIPAL ===")
-            ui.mostrar("1. Gestión de Usuarios")
-            ui.mostrar("2. Gestión de Productos")
-            ui.mostrar("3. Gestión de Pedidos")
-            ui.mostrar("4. Gestión de Lineas de pedido")
-            ui.mostrar("5. Salir")
-            ui.mostrar("Seleccione una opción: ")
+            ui.mostrar("\n1. Gestión de Usuarios")
+            ui.mostrar("\n2. Gestión de Productos")
+            ui.mostrar("\n3. Gestión de Pedidos")
+            ui.mostrar("\n4. Gestión de Lineas de pedido")
+            ui.mostrar("\n5. Salir")
+            ui.mostrar("\nSeleccione una opción: ")
 
             opcion = scanner.nextInt()
             scanner.nextLine()
@@ -46,11 +46,11 @@ class Aplicacion {
         var opcion: Int
         do {
             ui.mostrar("\n--- GESTIÓN DE USUARIOS ---")
-            ui.mostrar("1. Insertar usuario")
-            ui.mostrar("2. Eliminar usuario")
-            ui.mostrar("3. Mostrar los pedidos de un usuario")
-            ui.mostrar("4. Volver al menú principal")
-            ui.mostrar("Seleccione: ")
+            ui.mostrar("\n1. Insertar usuario")
+            ui.mostrar("\n2. Eliminar usuario")
+            ui.mostrar("\n3. Mostrar los pedidos de un usuario")
+            ui.mostrar("\n4. Volver al menú principal")
+            ui.mostrar("\nSeleccione: ")
 
             opcion = scanner.nextInt()
             scanner.nextLine()
@@ -90,11 +90,11 @@ class Aplicacion {
         var opcion: Int
         do{
             ui.mostrar("\n--- GESTIÓN DE USUARIOS ---")
-            ui.mostrar("1. Insertar producto")
-            ui.mostrar("2. Eliminar producto")
-            ui.mostrar("3. Modificar precio en oferta")
-            ui.mostrar("4. Volver al menú principal")
-            ui.mostrar("Seleccione: ")
+            ui.mostrar("\n1. Insertar producto")
+            ui.mostrar("\n2. Eliminar producto")
+            ui.mostrar("\n3. Modificar precio en oferta")
+            ui.mostrar("\n4. Volver al menú principal")
+            ui.mostrar("\nSeleccione: ")
 
             opcion = scanner.nextInt()
             scanner.nextLine()
@@ -133,10 +133,10 @@ class Aplicacion {
         var opcion: Int
         do{
             ui.mostrar("\n--- GESTIÓN DE USUARIOS ---")
-            ui.mostrar("1. Insertar pedido")
-            ui.mostrar("2. Eliminar pedido")
-            ui.mostrar("3. Volver al menú principal")
-            ui.mostrar("Seleccione: ")
+            ui.mostrar("\n1. Insertar pedido")
+            ui.mostrar("\n2. Eliminar pedido")
+            ui.mostrar("\n3. Volver al menú principal")
+            ui.mostrar("\nSeleccione: ")
 
             opcion = scanner.nextInt()
             scanner.nextLine()
@@ -167,11 +167,11 @@ class Aplicacion {
         var opcion: Int
         do{
             ui.mostrar("\n--- GESTIÓN DE USUARIOS ---")
-            ui.mostrar("1. Insertar Linea de pedido")
-            ui.mostrar("2. Eliminar Linea de pedido")
-            ui.mostrar("3. Modificar Linea de pedido")
-            ui.mostrar("4. Volver al menú principal")
-            ui.mostrar("Seleccione: ")
+            ui.mostrar("\n1. Insertar Linea de pedido")
+            ui.mostrar("\n2. Eliminar Linea de pedido")
+            ui.mostrar("\n3. Modificar Linea de pedido")
+            ui.mostrar("\n4. Volver al menú principal")
+            ui.mostrar("\nSeleccione: ")
 
             opcion = scanner.nextInt()
             scanner.nextLine()

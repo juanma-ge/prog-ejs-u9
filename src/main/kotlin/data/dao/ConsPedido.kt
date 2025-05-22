@@ -76,7 +76,7 @@ class ConsPedido: IConsPedido {
                 getConnection()?.use { conn ->
                     conn.prepareStatement(sql).use { stmt ->
                         stmt.setInt(1, id)
-                        stmt.executeUpdate(sql)
+                        stmt.executeUpdate()
                     }
                 }
         }catch (e: SQLException) {
@@ -91,7 +91,7 @@ class ConsPedido: IConsPedido {
                 conn.prepareStatement(sql).use { stmt ->
                     stmt.setDouble(1, precioTotal)
                     stmt.setInt(2, idUsuario)
-                    stmt.executeUpdate(sql)
+                    stmt.executeUpdate()
                 }
             }
         }catch (e: SQLException) {
