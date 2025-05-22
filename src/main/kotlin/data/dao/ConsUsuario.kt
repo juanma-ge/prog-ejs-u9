@@ -163,21 +163,28 @@ class ConsUsuario: IConsUsuario {
      * Se ejecuta una consulta en SQL para encontrar los usuarios.
      * En caso de error o excepción se capturará.
      */
-    fun mostrarPedidosRealizadosUsuario(nombre: String, email: String) {
+    fun mostrarPedidosRealizadosUsuario() {
         try {
             val sql = """
-            SELECT p.id, p.precioTotal 
-            FROM Pedido p
-            JOIN Usuario u ON p.idUsuario = u.id
-            WHERE u.nombre = 'Facundo Pérez';
-            """.trimIndent()
-                getConnection()?.use { conn ->
-                    conn.prepareStatement(sql).use { stmt ->
-                        stmt.executeUpdate()
+        SELECT p.id, p.precioTotal 
+        FROM Pedido p
+        JOIN Usuario u ON p.idUsuario = u.id
+        WHERE u.nombre = 'Facundo Pérez'
+        """.trimIndent()
+
+            getConnection()?.use { conn ->
+                conn.prepareStatement(sql).use { stmt ->
+                    val rs = stmt.executeQuery()
+
+                    while (rs.next()) {
+                        val id = rs.getInt("id")
+                        val precioTotal = rs.getDouble("precioTotal")
+                        println("ID Pedido: $id, Precio Total: $precioTotal")
                     }
                 }
-        }catch (e: SQLException) {
-            throw e
+            }
+        } catch (e: SQLException) {
+            e.printStackTrace()
         }
     }
 
