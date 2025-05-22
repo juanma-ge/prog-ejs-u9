@@ -62,6 +62,12 @@ class ConsProducto: IConsProducto {
         }
     }
 
+    /**
+     * Elimina el producto que introduzca el usuario, este se buscará por su precio..
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun eliminarProducto(precio: Double) {
         try {
             val sql = """DELETE FROM Producto WHERE precio = ?;"""
@@ -76,6 +82,12 @@ class ConsProducto: IConsProducto {
         }
     }
 
+    /**
+     * Se modificará el precio de un producto temporalmente, como una oferta, este se buscará por su nombre.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun modificarPrecioOferta(nombre: String, precio: Double) {
         try {
             val sql = """UPDATE Producto 
@@ -93,6 +105,12 @@ class ConsProducto: IConsProducto {
         }
     }
 
+    /**
+     * Se modificará el precio de un producto, duplicándolo, este se buscará por su id.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun cambiarPrecioProducto(nombre: String, idproducto: Int) {
         try {
             val sql = """
@@ -114,6 +132,12 @@ class ConsProducto: IConsProducto {
         }
     }
 
+    /**
+     * Se modificará el precio de un producto, este se buscará por su nombre.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun modificarPrecioProductoDoble(nombre: String) {
         try {
             val sql = """
@@ -132,6 +156,12 @@ class ConsProducto: IConsProducto {
         }
     }
 
+    /**
+     * Se inserta un producto, junto con sus datos, nombre, precio y stock.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun insertarProducto(nombre: String, precio: Double, stock: Int) {
         try {
             val sql = """INSERT INTO Producto (nombre, precio, stock) VALUES (?, ?, ?)"""

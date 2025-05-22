@@ -65,6 +65,12 @@ class ConsLinPedido(): IConsLinPedido {
         }
     }
 
+    /**
+     * Muestra la línea de pedido cuyo id de pedido sea insertado por el usuario.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun mostrarLinPedido(id: Int, idPedido: Int) {
         try {
             val sql = """
@@ -82,6 +88,12 @@ class ConsLinPedido(): IConsLinPedido {
         }
     }
 
+    /**
+     * Muestra la suma total del importe.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun mostrarSumaImporte(name: String) {
         try {
             val sql = """
@@ -101,6 +113,12 @@ class ConsLinPedido(): IConsLinPedido {
         }
     }
 
+    /**
+     * Elimina la línea de pedido buscándola por el id del pedido.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun eliminarLinPedido(idPedido: Int) {
         try {
             val sql = """DELETE FROM LineaPedido WHERE idPedido = ?;"""
@@ -115,6 +133,12 @@ class ConsLinPedido(): IConsLinPedido {
         }
     }
 
+    /**
+     * Se modifica el precio de la línea de pedido.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun modificarLinPedido(id: Int, idProducto: Int) {
         try {
             val sql = """
@@ -137,6 +161,12 @@ class ConsLinPedido(): IConsLinPedido {
         }
     }
 
+    /**
+     * Se inserta una línea de pedido, junto con sus datos, cantidad, precio, id de pedido e id de producto.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun insertarLinPedido(cantidad: Int, precio: Double, idPedido: Int, idProducto: Int) {
         try {
             val sql = """INSERT INTO LinPedido (cantidad, precio, idPedido, idproducto) VALUES (?, ?, ? , ?)"""

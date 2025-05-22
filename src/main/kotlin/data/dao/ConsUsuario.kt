@@ -64,6 +64,12 @@ class ConsUsuario: IConsUsuario {
         }
     }
 
+    /**
+     * Muestra todos los usuarios el cual introduzca el usuario.
+     *
+     * Se ejecuta una consulta en SQL para encontrarlo.
+     * En caso de error o excepción se capturará.
+     */
     override fun mostrarNombreUsuario(nombre: String) {
         try {
             val sql = """
@@ -85,6 +91,12 @@ class ConsUsuario: IConsUsuario {
         }
     }
 
+    /**
+     * Elimina el usuario que introduzca el usuario.
+     *
+     * Se ejecuta una consulta en SQL para encontrarlo y eliminarlo.
+     * En caso de error o excepción se capturará.
+     */
     override fun eliminaUsuario(nombre: String) {
         try {
             val sql ="""DELETE FROM Usuario WHERE nombre = ?;"""
@@ -99,6 +111,12 @@ class ConsUsuario: IConsUsuario {
         }
     }
 
+    /**
+     * Muestra todos los usuarios los cuales hayan comprado el producto 'Abanico'.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun insertarUsuario(nombre: String, email: String) {
         try {
             val sql = """INSERT INTO Usuario (nombre, email) VALUES (?, ?)"""
@@ -114,6 +132,12 @@ class ConsUsuario: IConsUsuario {
         }
     }
 
+    /**
+     * Muestra todos los pedidos realizados por el usuario que introduzca el usuario.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun mostrarPedidosRealizados(nombre: String) {
         try {
             val sql = """
@@ -133,6 +157,12 @@ class ConsUsuario: IConsUsuario {
         }
     }
 
+    /**
+     * Muestra todos pedidos realizados por el usuario 'Facundo Pérez'.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     fun mostrarPedidosRealizadosUsuario(nombre: String, email: String) {
         try {
             val sql = """

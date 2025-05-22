@@ -70,6 +70,12 @@ class ConsPedido: IConsPedido {
         }
     }
 
+    /**
+     * Se elimina el usuario buscándolo por su id.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun eliminarPedidoPorUsuario(id: Int) {
         try {
             val sql = """DELETE FROM Pedido WHERE id = ?;"""
@@ -84,6 +90,12 @@ class ConsPedido: IConsPedido {
         }
     }
 
+    /**
+     * Se inserta un producto, junto con sus datos, precio total e id de usuario.
+     *
+     * Se ejecuta una consulta en SQL para encontrar los usuarios.
+     * En caso de error o excepción se capturará.
+     */
     override fun insertarPedido(precioTotal: Double, idUsuario: Int) {
         try {
             val sql = """INSERT INTO Pedido (precioTotal, idUsuario) VALUES (?, ?)"""
